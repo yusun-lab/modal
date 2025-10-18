@@ -1,18 +1,18 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <h1>{{ title }}</h1>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-import HelloWorld from './components/HelloWorld.vue';
-
-@Options({
-  components: {
-    HelloWorld,
+// import { Options, Vue } from "vue-class-component";
+export default {
+  name: "App",
+  data() {
+    return {
+      title: "My first Vue 3 App",
+    };
   },
-})
-export default class App extends Vue {}
+};
+// export default class App extends Vue {}
 </script>
 
 <style>
@@ -23,5 +23,11 @@ export default class App extends Vue {}
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+h1 {
+  border-bottom: 1px solid #ddd;
+  display: inline-block;
+  padding-bottom: 10px;
 }
 </style>
