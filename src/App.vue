@@ -10,8 +10,10 @@ import { useTemplateRef } from "vue";
 const title = "My first Vue 3 app";
 </script>
 
+<!-- <style scoped> scoped <style> won't apply its style to anything outside this component-->
 <style>
 #app {
+  /* this app divv right here is not actully inside this component, it's in the public\index.html\<div id="app"></div> */
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
