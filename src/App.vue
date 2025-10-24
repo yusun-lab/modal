@@ -11,19 +11,42 @@
       <p>Grab your ninja swag for half price!</p>
     </Modal>
   </div>
-  <!-- <button @click.shift="toggleModal">Open modal</button> -->
+
+  <div v-if="showModalTwo">
+    <ModalTwo theme="fresh" @close="toggleModalTwo">
+      <template v-slot:vart>
+        <a href="#">turn left</a>
+        <a href="#">turn right</a>
+      </template>
+    </ModalTwo>
+  </div>
+
   <button @click.alt="toggleModal">Open modal (alt)</button>
+
+  <p>Hejdå</p>
+
+  <button @click.shift="toggleModalTwo">Open modal (shift)</button>
 </template>
 
 <script setup lang="ts">
+/*  challenge:
+- create an extra button to open a different modal
+- use the same modal component but pass in a different template (slot)
+- use a different method (e. g. toggleModalTwo) and data (e. g. showModalTwo)
+*/
 import Modal from "./components/Modal.vue";
+import ModalTwo from "./components/ModalTwo.vue";
 import { ref } from "vue";
 
 const title = ref("My first Vue 3 app:)");
 const showModal = ref(false);
+const showModalTwo = ref(false);
 
 const toggleModal = () => {
   showModal.value = !showModal.value;
+};
+const toggleModalTwo = () => {
+  showModalTwo.value = !showModalTwo.value;
 };
 </script>
 
