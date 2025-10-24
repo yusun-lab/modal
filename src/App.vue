@@ -1,19 +1,26 @@
 <template>
   <h1>{{ title }}</h1>
-  <Modal :header="header" :text="text" theme="sale" />
-  <!-- this is how we pass data as props into components which a: makes them more reusable, b: makes them more customizable, and c: allow us to have a single source of truth when it comes to our data -->
+  <p>Welcome...</p>
+  <div v-if="showModal">
+    <Modal :header="header" :text="text" theme="sale" @close="toggleModal" />
+  </div>
+  <button @click="toggleModal">Open modal</button>
 </template>
 
 <script setup lang="ts">
 import Modal from "./components/Modal.vue";
 import { ref } from "vue";
 
-const title = ref("My first Vue 3 app!");
+const title = ref("My first Vue 3 app:)");
 const header = ref("Sign up for the Giveaway!");
 const text = ref("Grab your ninja swag for half price!");
+const showModal = ref(false);
+
+const toggleModal = () => {
+  showModal.value = !showModal.value;
+};
 </script>
 
-<!-- <style scoped> scoped <style> won't apply its style to anything outside this component-->
 <style>
 #app {
   /* this app div right here is not actually inside this component, it's in the public\index.html\<div id="app"></div> */

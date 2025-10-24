@@ -1,5 +1,5 @@
 <template>
-  <div class="backdrop">
+  <div class="backdrop" @click="closeModal">
     <div class="modal" :class="{ sale: theme === 'sale' }">
       <h1>{{ header }}</h1>
       <p>{{ text }}</p>
@@ -7,20 +7,18 @@
   </div>
 </template>
 
-<!-- Vue 2 Options API: -->
-<!-- <script>
-export default {
-  props: ["header", "text"],
-};
-</script> -->
-
-<!-- Vue 3 -->
 <script setup lang="ts">
 const props = defineProps<{
   header: string | (string | number)[];
   text: string;
   theme: string;
 }>();
+
+const emit = defineEmits(["close"]);
+
+const closeModal = () => {
+  emit("close");
+};
 </script>
 
 <style>
