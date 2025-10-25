@@ -1,7 +1,8 @@
 <template>
   <h1>{{ title }}</h1>
   <p>Welcome...</p>
-  <div v-if="showModal">
+  <Teleport to=".modals" v-if="showModal">
+    <!-- this div/teleport is not inside this component, it's in the public\index.html\<div id="app"></div> -->
     <Modal theme="sale" @close="toggleModal">
       <template v-slot:links>
         <a href="#">sign up now</a>
@@ -10,16 +11,16 @@
       <h1>Ninja Giveaway</h1>
       <p>Grab your ninja swag for half price!</p>
     </Modal>
-  </div>
+  </Teleport>
 
-  <div v-if="showModalTwo">
+  <Teleport to="#modal-two" v-if="showModalTwo">
     <ModalTwo theme="fresh" @close="toggleModalTwo">
       <template v-slot:vart>
         <a href="#">turn left</a>
         <a href="#">turn right</a>
       </template>
     </ModalTwo>
-  </div>
+  </Teleport>
 
   <button @click.alt="toggleModal">Open modal (alt)</button>
 
@@ -36,7 +37,7 @@
 */
 import Modal from "./components/Modal.vue";
 import ModalTwo from "./components/ModalTwo.vue";
-import { ref } from "vue";
+import { ref, Teleport } from "vue";
 
 const title = ref("My first Vue 3 app:)");
 const showModal = ref(false);
@@ -51,8 +52,9 @@ const toggleModalTwo = () => {
 </script>
 
 <style>
-#app {
-  /* this app div right here is not actually inside this component, it's in the public\index.html\<div id="app"></div> */
+#app,
+.modal,
+#modal-two {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
