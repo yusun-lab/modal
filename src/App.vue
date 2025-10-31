@@ -1,7 +1,7 @@
 <template>
   <h1>{{ title }}</h1>
   <p>Welcome...</p>
-  <Teleport to=".modals" v-if="showModal">
+  <Teleport to=".modal" v-if="showModal">
     <!-- this div/teleport is not inside this component, it's in the public\index.html\<div id="app"></div> -->
     <Modal theme="sale" @close="toggleModal">
       <template v-slot:links>
@@ -30,11 +30,6 @@
 </template>
 
 <script setup lang="ts">
-/*  challenge:
-- create an extra button to open a different modal
-- use the same modal component but pass in a different template (slot)
-- use a different method (e. g. toggleModalTwo) and data (e. g. showModalTwo)
-*/
 import Modal from "./components/Modal.vue";
 import ModalTwo from "./components/ModalTwo.vue";
 import { ref, Teleport } from "vue";
